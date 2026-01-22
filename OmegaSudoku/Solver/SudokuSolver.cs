@@ -1,127 +1,168 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+using System.Numerics;
+
 
 namespace OmegaSudoku.Solver
 {
-    internal class SudokuSolver
+    public class SudokuSolver
     {
-        char[] solvedSudoku;
-        string sudoku;
-        int size;
-        int[] row;
-        int[] col;
-        int[] box;
+        private char[] solvedBoard;
+        private string board;
+        private int boxSize;
+        private int size;
+        private int[] row;
+        private int[] col;
+        private int[] box;
 
-        public SudokuSolver(string sudoku)
+        public SudokuSolver(string board)
         {
-            this.sudoku = sudoku;
-            this.solvedSudoku = sudoku.ToCharArray();
-            this.size = (int)Math.Sqrt(sudoku.Length);
+            this.board = board;
+            this.solvedBoard = board.ToCharArray();
+            this.size = (int)Math.Sqrt(board.Length);
+            this.boxSize = (int)Math.Sqrt(this.size);
 
             this.row = new int[size];
             this.col = new int[size];
             this.box = new int[size];
 
+            
+
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
                 {
-                    int val = (int)(sudoku[(i * size) + j] - '0');
-                    if (sudoku[(i * size) + j]!= '0')
+                    int val = (int)(board[(i * size) + j] - '0');
+                    if (val != 0)
                     {
                         row[i] |= (1 << val);
                         col[j] |= (1 << val);
-                        box[(i / 3) * 3 + j / 3] |= (1 << val);
+                        box[(i / boxSize) * boxSize + j / boxSize] |= (1 << val);
                     }
                 }
             }
         }
 
-        private bool IsSafe(int i , int j, int num)
+        public string getBoard()
         {
-            if ((row[i] & (1 << num)) != 0 || (col[j] & (1<<num)) != 0 || (box[i/3 * 3 + j /3] &(1<<num)) != 0)
-            {
-                return false;
-            }
-            return true;
+            return this.board;
         }
 
-        private bool SolverRec(int i = 0 , int j = 0)
+        public void PrintArrays()
         {
-            if(i == size - 1 && j == size)
+            Console.WriteLine("\nrows:");
+            for(int i = 0;i < size; i++)
+            {
+                Console.Write(Convert.ToString(row[i], 2) + " ");
+            }
+            Console.WriteLine("\ncol:");
+            for (int i = 0; i < size; i++)
+            {
+                Console.Write(Convert.ToString(col[i], 2) + " ");
+            }
+            Console.WriteLine("\nbox:");
+            for (int i = 0; i < size; i++)
+            {
+                Console.Write(Convert.ToString(box[i],2) + " ");
+            }
+            Console.WriteLine();
+        }
+
+
+        public void Solve()
+        {
+            SolverRec();
+            board = new string(solvedBoard);
+        }
+
+        private bool SolverRec()
+        {
+            var index = FindBestCell();
+
+            int i = index.i;
+            int j = index.j;
+
+            if (i == -1)
             {
                 return true;
             }
 
-            if(j == size)
-            {
-                i++;
-                j = 0;
-            }
+            int val = (int)(solvedBoard[(i * size) + j] - '0');
+            
 
-            int val = (int)(solvedSudoku[(i * size) + j] - '0');
-    
-            if(val != 0)
+            for (int num = 1; num <= size; num++)
             {
-                return SolverRec(i, j + 1);
-            }
-
-            for(int num = 1; num <= size; num++)
-            {
-                if(IsSafe(i, j, num))
+                if (IsSafe(i, j, num))
                 {
-                    solvedSudoku[i * size + j] = (char)(num + '0');
+                    solvedBoard[i * size + j] = (char)(num + '0');
+                    setBite(i, j, num);
 
-                    row[i] |= (1 << num);
-                    col[j] |= (1 << num);
-                    box[i/3*3+ j /3] |= (1<<num);
-
-                    if(SolverRec(i, j + 1))
+                    if (SolverRec())
                     {
                         return true;
                     }
 
-                    solvedSudoku[i * size + j] = '0';
-                    row[i] &= ~(1 << num);
-                    col[j] &= ~(1 << num);
-                    box[i / 3 * 3 + j / 3] &= ~(1 << num);
+                    solvedBoard[i * size + j] = '0';
+                    unsetBite(i, j, num);
 
                 }
             }
             return false;
         }
-
-        public void Solve()
+        private bool IsSafe(int i, int j, int num)
         {
-            SolverRec(0, 0);
-            sudoku = new string(solvedSudoku);
+            return !((row[i] & (1 << num)) != 0 || (col[j] & (1 << num)) != 0 || (box[i / boxSize * boxSize + j / boxSize] & (1 << num)) != 0);
         }
 
-        public void printSudoku()
+        private void setBite(int i, int j, int num)
         {
-            Console.WriteLine("-------------------------");
-            for (int i = 0; i < size; i++)
-            {
-                for (int j = 0; j < size; j++)
-                {
-                    if (j % (int)Math.Sqrt(size) == 0)
-                    {
-                        Console.Write("| ");
-                    }
-                    Console.Write(sudoku[i*size+ j] == '0' ? " " : sudoku[i * size + j].ToString());
-                    Console.Write(" ");
-                }
-                Console.WriteLine("|");
+            row[i] |= (1 << num);
+            col[j] |= (1 << num);
+            box[i / boxSize * boxSize + j / boxSize] |= (1 << num);
+        }
+        private void unsetBite(int i, int j, int num)
+        {
+            row[i] &= ~(1 << num);
+            col[j] &= ~(1 << num);
+            box[i / boxSize * boxSize + j / boxSize] &= ~(1 << num);
+        }
 
-                if ((i + 1) % (int)Math.Sqrt(size) == 0)
+
+        private (int i, int j) FindBestCell()
+        {
+            int bestI = -1;
+            int bestJ = -1;
+            int minValues = size + 1; 
+            
+
+            for(int i = 0; i < size; i++)
+            {
+
+                for(int j = 0; j < size; j++)
                 {
-                    Console.WriteLine("-------------------------");
+                    if(solvedBoard[(i * size) + j] == '0')
+                    {
+                        int values = row[i] | col[j] | box[i / boxSize * boxSize + j / boxSize];
+                        values = size - BitOperations.PopCount((uint)values);
+
+                        if (values == 1)
+                        {
+                            return (i, j);
+                        }
+
+
+                        if (values < minValues)
+                        {
+                            minValues = values;
+                            bestI = i;
+                            bestJ = j;
+                        }
+                    }
+
                 }
             }
+
+            return (bestI, bestJ);
         }
+
     }
 }

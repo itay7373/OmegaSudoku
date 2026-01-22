@@ -5,4 +5,3 @@ D:\itay\Omega\OmegaSudoku\OmegaSudoku\obj\Debug\OmegaSudoku.csproj.AssemblyRefer
 D:\itay\Omega\OmegaSudoku\OmegaSudoku\obj\Debug\OmegaSudoku.csproj.CoreCompileInputs.cache
 D:\itay\Omega\OmegaSudoku\OmegaSudoku\obj\Debug\OmegaSudoku.exe
 D:\itay\Omega\OmegaSudoku\OmegaSudoku\obj\Debug\OmegaSudoku.pdb
-D:\itay\Omega\OmegaSudoku\OmegaSudoku\obj\Debug\OmegaSudoku.exe.config
