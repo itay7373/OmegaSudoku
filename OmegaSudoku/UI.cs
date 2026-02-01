@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 
@@ -7,6 +8,29 @@ namespace OmegaSudoku
 {
     internal class UI
     {
+        public static void Start()
+        {
+            Console.Clear();
+        }
+
+        public static string EnterSudoku()
+        {
+            Console.WriteLine("please enter your sudoku board: ");
+            return Console.ReadLine();
+        }
+
+        public static void PrintTime(Stopwatch s)
+        {
+            Console.WriteLine("time: " + s.Elapsed);
+        }
+        public static void End()
+        {
+            Console.WriteLine("\n---------------------------------------");
+            Console.WriteLine("please press ENTER when you want to solve another board.");
+            Console.ReadLine();
+        }
+
+
         public static void PrintSudoku(string board)
         {
             int size = (int)Math.Sqrt(board.Length);

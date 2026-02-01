@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "D:\\itay\\Omega\\OmegaSudoku\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\exceptions\\unsolvableboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\exceptions\\unsolvableboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\exceptions\\invalidboardsize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\exceptions\\invalidboardsize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\solver\\sudokusolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\solver\\sudokusolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\sudokusolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\sudokusolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,20 +30,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Program.cs",
               "RelativeDocumentMoniker": "OmegaSudoku\\Program.cs",
-              "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Program.cs",
-              "RelativeToolTip": "OmegaSudoku\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABtAAAAAAAAAA==",
+              "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Program.cs*",
+              "RelativeToolTip": "OmegaSudoku\\Program.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-20T19:37:40.068Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SudokuSolver.cs",
+              "DocumentMoniker": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\SudokuSolver.cs",
+              "RelativeDocumentMoniker": "OmegaSudoku\\SudokuSolver.cs",
+              "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\SudokuSolver.cs",
+              "RelativeToolTip": "OmegaSudoku\\SudokuSolver.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBUAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T19:37:36.065Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InvalidBoardSize.cs",
+              "DocumentMoniker": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Exceptions\\InvalidBoardSize.cs",
+              "RelativeDocumentMoniker": "OmegaSudoku\\Exceptions\\InvalidBoardSize.cs",
+              "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Exceptions\\InvalidBoardSize.cs",
+              "RelativeToolTip": "OmegaSudoku\\Exceptions\\InvalidBoardSize.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAB8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T18:40:59.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UnsolvableBoard.cs",
+              "DocumentMoniker": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Exceptions\\UnsolvableBoard.cs",
+              "RelativeDocumentMoniker": "OmegaSudoku\\Exceptions\\UnsolvableBoard.cs",
+              "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Exceptions\\UnsolvableBoard.cs*",
+              "RelativeToolTip": "OmegaSudoku\\Exceptions\\UnsolvableBoard.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T18:40:41.024Z",
               "EditorCaption": ""
             },
             {
@@ -52,28 +100,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "UI.cs",
               "DocumentMoniker": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\UI.cs",
               "RelativeDocumentMoniker": "OmegaSudoku\\UI.cs",
               "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\UI.cs",
               "RelativeToolTip": "OmegaSudoku\\UI.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBcAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAwwBsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-22T10:58:03.839Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SudokuSolver.cs",
-              "DocumentMoniker": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Solver\\SudokuSolver.cs",
-              "RelativeDocumentMoniker": "OmegaSudoku\\Solver\\SudokuSolver.cs",
-              "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Solver\\SudokuSolver.cs",
-              "RelativeToolTip": "OmegaSudoku\\Solver\\SudokuSolver.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAuwIEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T19:37:36.065Z",
+              "WhenOpened": "2026-01-22T16:43:34.557Z",
               "EditorCaption": ""
             }
           ]
