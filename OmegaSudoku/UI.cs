@@ -11,6 +11,8 @@ namespace OmegaSudoku
         public static void Start()
         {
             Console.Clear();
+            Console.WriteLine("------------------------------------------------------");
+
         }
 
         public static string EnterSudoku()
@@ -25,7 +27,7 @@ namespace OmegaSudoku
         }
         public static void End()
         {
-            Console.WriteLine("\n---------------------------------------");
+            Console.WriteLine("------------------------------------------------------");
             Console.WriteLine("please press ENTER when you want to solve another board.");
             Console.ReadLine();
         }

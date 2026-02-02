@@ -1,0 +1,28 @@
+﻿using OmegaSudoku.Exceptions;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace OmegaSudoku
+{
+    internal class BoardVerifier
+    {
+        public static void VerifieBoard(string board)
+        {
+            //check if the board lentgh is valid 
+            if (Math.Sqrt(Math.Sqrt(board.Length)) % 1 != 0 || board.Length == 1)
+            {
+                throw new InvalidBoardSize(board);
+            }
+            //check if all the valuese are valid (numbers or letters, depends on the board size. 
+            for(int i =0; i < board.Length; i++)
+            {
+                int value = SudokuSolver.charToInt(board[i]);
+                if (value < 0 || value > Math.Sqrt(board.Length))
+                {
+                    throw new InvalidValus(board, i);
+                }
+            }
+        }
+    }
+}

@@ -16,6 +16,8 @@ namespace OmegaSudoku
                 {
                     string board = UI.EnterSudoku();
 
+                    BoardVerifier.VerifieBoard(board);
+
                     SudokuSolver s = new SudokuSolver(board);
 
                     UI.PrintSudoku(s.GetBoard());
@@ -25,7 +27,7 @@ namespace OmegaSudoku
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("please enter a valid board.");
+                    Console.WriteLine("\nplease enter a valid board.");
                 }
 
                 UI.End();

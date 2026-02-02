@@ -19,11 +19,6 @@ namespace OmegaSudoku
 
         public SudokuSolver(string board)
         {
-            if(Math.Sqrt(Math.Sqrt(board.Length)) % 1 != 0 || board.Length == 1)
-            {
-                throw new InvalidBoardSize(board);
-            }
-
             this.board = board;
             this.solvedBoard = board.ToCharArray();
             this.size = (int)Math.Sqrt(board.Length);
@@ -43,6 +38,14 @@ namespace OmegaSudoku
                     int val = charToInt(board[(i * size) + j]);
                     if (val != 0)
                     {
+                        ///check if the board is valid
+                        ///throw exception if the value already exist in the same row, colunm or box
+                        int validationMask = (1 << val);
+                        if ((row[i] & validationMask) != 0 || (col[j] & validationMask) != 0 | (box[(i / boxSize) * boxSize + j / boxSize] & validationMask) != 0)
+                        {
+                            throw new UnsolvableBoard();
+                        }
+
                         row[i] |= (1 << val);
                         col[j] |= (1 << val);
                         box[(i / boxSize) * boxSize + j / boxSize] |= (1 << val);
@@ -94,7 +97,7 @@ namespace OmegaSudoku
         /// if the int is above 10 it returns a uppersent letter where A repreesnt 10, B - 11 and so on.. 
         /// the char to int is doing the same thing reversed. 
         /// </summary>
-        private int charToInt(char c)
+        public static int charToInt(char c)
         {
             if (c >= '0' && c <= '9') return c - '0'; 
             if (c >= 'A' && c <= 'Z') return c - 'A' + 10;
@@ -198,131 +201,6 @@ namespace OmegaSudoku
             }
 
             return bestI * size + bestJ;
-        }
-
-        private (int r, int c, int n) FillHiddenSingle()
-        {
-            for(int num = 1; num <= size; num++)
-            {
-                int mask = 1 << num;
-
-
-                //rows
-                int r = 0, c = 0;
-                int counter = 0;
-                for(int i =0; i < size; i++)
-                {
-                    for(int j = 0; j < size; j++)
-                    {
-                        int options = row[i] | col[j];
-                        if((mask & options) == 0)
-                        {
-                            counter++;
-                            r = i;
-                            c = j;
-                        }
-                    }
-                }
-            }
-            return (-1,-1,-1);
-        }
-
-
-        private bool IsHiddenSingles(int i, int j)
-        {
-            //row
-            int options = row[i] | col[j] | box[i / boxSize * boxSize + j / boxSize] | 1;
-
-
-            for (int k = 0; k < size; k++)
-            {
-                if(k != j && solvedBoard[i * size + j] == '0')
-                {
-                    //Console.WriteLine($"\npos: [{i},{k}]");
-                    int mask = row[i] | col[k] | box[i / boxSize * boxSize + k / boxSize];
-                    mask = (~mask);
-                    mask &= 1023;
-                    //Console.WriteLine($"op: {Convert.ToString(options,2)}\nma: {Convert.ToString(mask, 2)}");
-                    options |= (~mask);
-                    options &= 1023;
-                }
-            }
-            if(size - BitOperations.PopCount((uint)options) == 1)
-            {
-                return true;
-            }
-
-            //col
-            options = row[i] | col[j] | box[i / boxSize * boxSize + j / boxSize] | 1;
-            for (int k = 0; k < size; k++)
-            {
-                if (k != i && solvedBoard[i * size + j] == '0')
-                {
-                    //Console.WriteLine($"\npos: [{i},{k}]");
-                    int mask = row[i] | col[k] | box[i / boxSize * boxSize + k / boxSize];
-                    mask = (~mask);
-                    mask &= 1023;
-                    //Console.WriteLine($"op: {Convert.ToString(options, 2)}\nma: {Convert.ToString(mask, 2)}");
-                    options |= (~mask);
-                    options &= 1023;
-                }
-            }
-            if (size - BitOperations.PopCount((uint)options) == 1)
-            {
-                return true;
-            }
-
-            //box
-            options = row[i] | col[j] | box[i / boxSize * boxSize + j / boxSize] | 1;
-            int index = i * size + j;
-            int boxNum = i / boxSize * boxSize + j / boxSize;
-            i = (boxNum / boxSize) * boxSize;
-            j = (boxNum * boxSize) % size;
-            for (int k = 1; k <= size; k++)
-            {
-                if (i * size + j != index && solvedBoard[i * size + j] == '0')
-                {
-                    int mask = row[i] | col[j] | box[i / boxSize * boxSize + j / boxSize];
-                    mask = (~mask);
-                    mask &= 1023;
-                    Console.WriteLine($"pos: [{i}, {j}]\nop: {Convert.ToString(options, 2)}\nma: {Convert.ToString(mask, 2)}");
-                    options |= (~mask);
-                    options &= 1023;
-                }
-                j++;
-                if (k != 0 && k % 3 == 0)
-                {
-                    i++;
-                    j -= boxSize;
-                }
-            }
-            if (size - BitOperations.PopCount((uint)options) == 1)
-            {
-                return true;
-            }
-
-
-            return false;
-        }
-
-
-        public void getBoxIndex(int num)
-        {
-            int i = (num / boxSize) * boxSize;
-            int j = (num * boxSize) % size;
-            for (int k = 1; k <= size; k++)
-            {
-                Console.Write($"[{i},{j}]");
-                j++;
-                if(k != 0 && k % 3 == 0)
-                {
-                    i++;
-                    j -= boxSize;
-                }
-            }
-
-
-            Console.WriteLine();
         }
     }
 }
