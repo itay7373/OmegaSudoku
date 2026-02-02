@@ -27,7 +27,7 @@ namespace OmegaSudoku
         }
         public static void End()
         {
-            Console.WriteLine("------------------------------------------------------");
+            Console.WriteLine("--------------------------------------------------------");
             Console.WriteLine("please press ENTER when you want to solve another board.");
             Console.ReadLine();
         }

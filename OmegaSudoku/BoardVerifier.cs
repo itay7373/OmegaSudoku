@@ -9,10 +9,15 @@ namespace OmegaSudoku
     {
         public static void VerifieBoard(string board)
         {
+            if(board.Length == 0)
+            {
+                throw new EmptyBoardException();
+            }
+                
             //check if the board lentgh is valid 
             if (Math.Sqrt(Math.Sqrt(board.Length)) % 1 != 0 || board.Length == 1)
             {
-                throw new InvalidBoardSize(board);
+                throw new InvalidBoardSizeException(board);
             }
             //check if all the valuese are valid (numbers or letters, depends on the board size. 
             for(int i =0; i < board.Length; i++)
@@ -20,7 +25,7 @@ namespace OmegaSudoku
                 int value = SudokuSolver.charToInt(board[i]);
                 if (value < 0 || value > Math.Sqrt(board.Length))
                 {
-                    throw new InvalidValus(board, i);
+                    throw new InvalidValusException(board, i);
                 }
             }
         }

@@ -1,0 +1,14 @@
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\bin\Release\net10.0\OmegaSudoku.exe
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\bin\Release\net10.0\OmegaSudoku.dll.config
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\bin\Release\net10.0\OmegaSudoku.deps.json
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\bin\Release\net10.0\OmegaSudoku.runtimeconfig.json
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\bin\Release\net10.0\OmegaSudoku.dll
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\bin\Release\net10.0\OmegaSudoku.pdb
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\obj\Release\net10.0\OmegaSudoku.GeneratedMSBuildEditorConfig.editorconfig
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\obj\Release\net10.0\OmegaSudoku.csproj.CoreCompileInputs.cache
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\obj\Release\net10.0\OmegaSudoku.sourcelink.json
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\obj\Release\net10.0\OmegaSudoku.dll
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\obj\Release\net10.0\refint\OmegaSudoku.dll
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\obj\Release\net10.0\OmegaSudoku.pdb
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\obj\Release\net10.0\OmegaSudoku.genruntimeconfig.cache
+D:\itay\Omega\OmegaSudoku\OmegaSudoku\obj\Release\net10.0\ref\OmegaSudoku.dll

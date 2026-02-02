@@ -1,5 +1,6 @@
 ﻿using OmegaSudoku.Exceptions;
 using System;
+using System.Collections;
 using System.Diagnostics;
 using System.Numerics;
 
@@ -19,6 +20,8 @@ namespace OmegaSudoku
 
         public SudokuSolver(string board)
         {
+            BoardVerifier.VerifieBoard(board);
+
             this.board = board;
             this.solvedBoard = board.ToCharArray();
             this.size = (int)Math.Sqrt(board.Length);
@@ -43,7 +46,7 @@ namespace OmegaSudoku
                         int validationMask = (1 << val);
                         if ((row[i] & validationMask) != 0 || (col[j] & validationMask) != 0 | (box[(i / boxSize) * boxSize + j / boxSize] & validationMask) != 0)
                         {
-                            throw new UnsolvableBoard();
+                            throw new UnsolvableBoardException();
                         }
 
                         row[i] |= (1 << val);
@@ -118,7 +121,7 @@ namespace OmegaSudoku
         {
             timer.Start();
             if (!SolverRec())
-                throw new UnsolvableBoard();
+                throw new UnsolvableBoardException();
 
             board = new string(solvedBoard);
             timer.Stop();
@@ -126,13 +129,11 @@ namespace OmegaSudoku
 
         private bool SolverRec()
         {
-            //fill hidden single
+            //find the index of the best cell that we can check according to the FindBestCell function
+            var index = FindBestCell();
 
-            //fint the index of the best cell that we can check according to the FindBestCell function
-            int index = FindBestCell();
-
-            int j = index % size;
-            int i = (index - j) / size;
+            int i = index.i;
+            int j = index.j;
 
             if (i == -1)
             {
@@ -145,7 +146,7 @@ namespace OmegaSudoku
                 if (IsSafe(i, j, num))
                 {
                     //place the number in thee cell
-                    solvedBoard[index] = intToChar(num);
+                    solvedBoard[i * size  + j] = intToChar(num);
                     setBite(i, j, num);
 
                     //recursive call
@@ -155,7 +156,7 @@ namespace OmegaSudoku
                     }
 
                     //delete the numbeer from the cell
-                    solvedBoard[index] = '0';
+                    solvedBoard[i * size + j] = '0';
                     unsetBite(i, j, num);
 
                 }
@@ -167,11 +168,12 @@ namespace OmegaSudoku
         /// <summary>
         /// the function return the cell with the least amount of valuse that can be placed in
         /// </summary>
-        private int FindBestCell()
+        private (int i, int j) FindBestCell()
         {
             int bestI = -1;
             int bestJ = -1;
-            int minValues = size + 1;         
+            int minValues = size + 1;
+            int maxImpact = -1; 
 
             for(int i = 0; i < size; i++)
             {
@@ -187,11 +189,17 @@ namespace OmegaSudoku
                         //if there is only one value that can b in this cell, the function return this cell immediately
                         if (values == 1)
                         {
-                            return i * size + j;
+                            return (i, j);
                         }
 
-                        if (values < minValues)
+                        int impact = 3 * size
+                            - BitOperations.PopCount((uint)row[i]) 
+                            - BitOperations.PopCount((uint)col[j]) 
+                            - BitOperations.PopCount((uint)box[i / boxSize * boxSize + j / boxSize]);
+
+                        if ((values < minValues) || (impact > maxImpact && values == minValues))
                         {
+                            maxImpact = impact;
                             minValues = values;
                             bestI = i;
                             bestJ = j;
@@ -200,7 +208,7 @@ namespace OmegaSudoku
                 }
             }
 
-            return bestI * size + bestJ;
+            return (bestI, bestJ);
         }
     }
 }
