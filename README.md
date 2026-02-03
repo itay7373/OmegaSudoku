@@ -15,7 +15,7 @@ Example for an input: "800000070006010053040600000000080400003000700020005038000
  
 
 **Error Handling:**
-If th solver can not solve your board for any reason, it will provide a detailed explanation.
+If the solver can not solve your board for any reason, it will provide a detailed explanation.
 > **Note:** For detailed explanations of the functions and logic, please refer to the documentation inside the code.
 
 ## Algorithm & Optimization
