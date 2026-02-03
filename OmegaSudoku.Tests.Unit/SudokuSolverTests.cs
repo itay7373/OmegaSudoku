@@ -44,6 +44,30 @@ namespace OmegaSudoku.Tests.Unit
             Assert.Throws<UnsolvableBoardException>(action);
         }
 
+        [Fact]
+        public void Solve_WhenBoardHasIdenticalNumbersInSameRow_ShouldReturnIdenticalNumbersRowException()
+        {
+            string invalidBoard = "110000000000000000000000000000000000000000000000000000000000000000000000000000000";
+
+            Assert.Throws<IdenticalNumbersRowException>(() => new SudokuSolver(invalidBoard));
+        }
+
+        [Fact]
+        public void Solve_WhenBoardHasIdenticalNumbersInSameColumn_ShouldReturnIdenticalNumbersColumnException()
+        {
+            string invalidBoard = "100000000100000000000000000000000000000000000000000000000000000000000000000000000";
+
+            Assert.Throws<IdenticalNumbersColumnException>(() => new SudokuSolver(invalidBoard));
+        }
+
+        [Fact]
+        public void Solve_WhenBoardHasIdenticalNumbersInSameBox_ShouldReturnIdenticalNumbersBoxException()
+        {
+            string invalidBoard = "100000000010000000000000000000000000000000000000000000000000000000000000000000000";
+
+            Assert.Throws<IdenticalNumbersBoxException>(() => new SudokuSolver(invalidBoard));
+        }
+
         [Theory]
         [InlineData("000060080020000000001000000070000102500030000000000400004201000300700600000000050", "947165283823974516651328947478596132516432879239817465764251398385749621192683754")]
         [InlineData("070000043040009610800634900094052000358460020000800530080070091902100005007040802", "679518243543729618821634957794352186358461729216897534485276391962183475137945862")]

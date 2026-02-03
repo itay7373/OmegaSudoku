@@ -44,9 +44,20 @@ namespace OmegaSudoku
                         ///check if the board is valid
                         ///throw exception if the value already exist in the same row, colunm or box
                         int validationMask = (1 << val);
-                        if ((row[i] & validationMask) != 0 || (col[j] & validationMask) != 0 | (box[(i / boxSize) * boxSize + j / boxSize] & validationMask) != 0)
+                        if ((row[i] & validationMask) != 0)
                         {
-                            throw new UnsolvableBoardException();
+                            UI.PrintSudoku(board);
+                            throw new IdenticalNumbersRowException(i);
+                        }
+                        if((col[j] & validationMask) != 0)
+                        {
+                            UI.PrintSudoku(board);
+                            throw new IdenticalNumbersColumnException(j);
+                        }
+                        if((box[(i / boxSize) * boxSize + j / boxSize] & validationMask) != 0)
+                        {
+                            UI.PrintSudoku(board);
+                            throw new IdenticalNumbersBoxException(i, j, boxSize);
                         }
 
                         row[i] |= (1 << val);
@@ -129,6 +140,24 @@ namespace OmegaSudoku
 
         private bool SolverRec()
         {
+            var hs = FindHiddenSingle();
+            if (hs.num > 0)
+            {
+                int r = hs.r;
+                int c = hs.c;
+                solvedBoard[r * size + c] = intToChar(hs.num);
+                setBite(r, c, hs.num);
+
+                if (SolverRec())
+                {
+                    return true;
+                }
+
+                solvedBoard[r * size + c] = '0';
+                unsetBite(r, c, hs.num);
+                return false;
+            }
+
             //find the index of the best cell that we can check according to the FindBestCell function
             var index = FindBestCell();
 
@@ -192,8 +221,7 @@ namespace OmegaSudoku
                             return (i, j);
                         }
 
-                        int impact = 3 * size
-                            - BitOperations.PopCount((uint)row[i]) 
+                        int impact = 3 * size - BitOperations.PopCount((uint)row[i]) 
                             - BitOperations.PopCount((uint)col[j]) 
                             - BitOperations.PopCount((uint)box[i / boxSize * boxSize + j / boxSize]);
 
@@ -209,6 +237,77 @@ namespace OmegaSudoku
             }
 
             return (bestI, bestJ);
+        }
+
+        /// <summary>
+        /// find numbers with "hidden single" technique
+        /// </summary>
+        private (int r, int c, int num) FindHiddenSingle()
+        {
+            int counter = 0;
+            int lastR = -1;
+            int lastC = -1;
+            //go throw all the numbers
+            for (int num = 1; num <= size; num++)
+            {
+                for (int i = 0; i < size; i++)
+                {
+                    //check the rows
+                    counter = 0;
+                    for (int c = 0; c < size; c++)
+                    {
+                        //if the number can be placed in the cell, increase the counter
+                        if (solvedBoard[i * size + c] == '0' && IsSafe(i, c, num))
+                        {
+                            lastR = i;
+                            lastC = c;
+                            counter++;
+                        }
+                    }
+                    //if the counter is one, thee function found a hidden single
+                    if (counter == 1)
+                    {
+                        //return the position and the number
+                        return (lastR, lastC, num);
+                    }
+
+                    //check the cols - same as rows
+                    counter = 0;
+                    for (int r = 0; r < size; r++)
+                    {
+                        if (solvedBoard[r * size + i] == '0' && IsSafe(r, i, num))
+                        {
+                            lastR = r;
+                            lastC = i;
+                            counter++;
+                        }
+                    }
+                    if (counter == 1)
+                    {
+                        return (lastR, lastC, num);
+                    }
+
+                    //check the boxes, almost as the rows and cols
+                    counter = 0;
+                    //find the start index of each box in the board (the top right cell in each box) 
+                    int boxStartIndex = (i * boxSize + (i / boxSize) * boxSize / size + (i / boxSize) * size * 2);
+                    int boxCStartIndex = boxStartIndex % size;
+                    int boxRStrartIndex = boxStartIndex / size;
+                    for (int r = 0; r < boxSize; r++)
+                    {
+                        for (int c = 0; c < boxSize; c++)
+                        {
+                            if (solvedBoard[(boxRStrartIndex + r) * size + boxCStartIndex + c] == '0' && IsSafe(boxRStrartIndex + r, boxCStartIndex + c, num))
+                            {
+                                lastR = boxRStrartIndex + r;
+                                lastC = boxCStartIndex + c;
+                                counter++;
+                            }
+                        }
+                    }
+                }
+            }
+            return (-1, -1, -1);
         }
     }
 }
