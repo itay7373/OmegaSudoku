@@ -23,7 +23,7 @@ namespace OmegaSudoku.BoardVerify
             //check if all the valuese are valid (numbers or letters, depends on the board size. 
             for(int i =0; i < board.Length; i++)
             {
-                int value = SudokuSolver.charToInt(board[i]);
+                int value = SudokuSolver.CharToInt(board[i]);
                 if (value < 0 || value > Math.Sqrt(board.Length))
                 {
                     throw new InvalidValusException(board, i);

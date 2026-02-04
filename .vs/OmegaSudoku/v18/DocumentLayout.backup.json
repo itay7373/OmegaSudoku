@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "D:\\itay\\Omega\\OmegaSudoku\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\solver\\sudokusolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\solver\\sudokusolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\io\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\io\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CACF9B83-D225-4B3C-9FB1-71894C672E10}|OmegaSudoku.Tests.Unit\\OmegaSudoku.Tests.Unit.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku.tests.unit\\sudokusolvertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CACF9B83-D225-4B3C-9FB1-71894C672E10}|OmegaSudoku.Tests.Unit\\OmegaSudoku.Tests.Unit.csproj|solutionrelative:omegasudoku.tests.unit\\sudokusolvertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\exceptions\\identicalnumbersboxexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\exceptions\\identicalnumbersboxexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\boardverify\\boardverifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\boardverify\\boardverifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\exceptions\\identicalnumbersboxexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\exceptions\\identicalnumbersboxexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\io\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|solutionrelative:omegasudoku\\io\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1CAFB872-7E72-4C37-BD89-9D6EAB7C922B}|OmegaSudoku\\OmegaSudoku.csproj|d:\\itay\\omega\\omegasudoku\\omegasudoku\\exceptions\\identicalnumbersrowexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,46 +74,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UI.cs",
-              "DocumentMoniker": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\IO\\UI.cs",
-              "RelativeDocumentMoniker": "OmegaSudoku\\IO\\UI.cs",
-              "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\IO\\UI.cs",
-              "RelativeToolTip": "OmegaSudoku\\IO\\UI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T10:39:20.764Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Program.cs",
               "RelativeDocumentMoniker": "OmegaSudoku\\Program.cs",
               "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Program.cs",
               "RelativeToolTip": "OmegaSudoku\\Program.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwCcAAABfAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA1wCgAAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-03T20:15:14.652Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "SudokuSolverTests.cs",
               "DocumentMoniker": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku.Tests.Unit\\SudokuSolverTests.cs",
               "RelativeDocumentMoniker": "OmegaSudoku.Tests.Unit\\SudokuSolverTests.cs",
               "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku.Tests.Unit\\SudokuSolverTests.cs",
               "RelativeToolTip": "OmegaSudoku.Tests.Unit\\SudokuSolverTests.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-03T20:15:13.234Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "IdenticalNumbersBoxException.cs",
               "DocumentMoniker": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Exceptions\\IdenticalNumbersBoxException.cs",
               "RelativeDocumentMoniker": "OmegaSudoku\\Exceptions\\IdenticalNumbersBoxException.cs",
@@ -126,13 +113,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "SudokuSolver.cs",
               "DocumentMoniker": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Solver\\SudokuSolver.cs",
               "RelativeDocumentMoniker": "OmegaSudoku\\Solver\\SudokuSolver.cs",
-              "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Solver\\SudokuSolver.cs",
-              "RelativeToolTip": "OmegaSudoku\\Solver\\SudokuSolver.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIcAAAAfAAAAAAAAAA==",
+              "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\Solver\\SudokuSolver.cs*",
+              "RelativeToolTip": "OmegaSudoku\\Solver\\SudokuSolver.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-02T20:44:55.997Z",
               "EditorCaption": ""
@@ -175,16 +162,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "BoardVerifier.cs",
               "DocumentMoniker": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\BoardVerify\\BoardVerifier.cs",
               "RelativeDocumentMoniker": "OmegaSudoku\\BoardVerify\\BoardVerifier.cs",
               "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\BoardVerify\\BoardVerifier.cs",
               "RelativeToolTip": "OmegaSudoku\\BoardVerify\\BoardVerifier.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAqwBkAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-03T17:57:15.631Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UI.cs",
+              "DocumentMoniker": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\IO\\UI.cs",
+              "RelativeDocumentMoniker": "OmegaSudoku\\IO\\UI.cs",
+              "ToolTip": "D:\\itay\\Omega\\OmegaSudoku\\OmegaSudoku\\IO\\UI.cs",
+              "RelativeToolTip": "OmegaSudoku\\IO\\UI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-04T10:39:20.764Z"
             },
             {
               "$type": "Document",

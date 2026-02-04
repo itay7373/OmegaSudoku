@@ -13,8 +13,8 @@ namespace OmegaSudoku.Solver
     {
         private string board;
         private char[] solvedBoard;
-        private int boxSize;
-        private int size;
+        private readonly int boxSize;
+        private readonly int size;
         private int[] row;
         private int[] col;
         private int[] box;
@@ -40,7 +40,7 @@ namespace OmegaSudoku.Solver
             {
                 for (int j = 0; j < size; j++)
                 {
-                    int val = charToInt(board[(i * size) + j]);
+                    int val = CharToInt(board[(i * size) + j]);
                     if (val != 0)
                     {
                         ///check if the board is valid
@@ -95,13 +95,13 @@ namespace OmegaSudoku.Solver
         /// the functions setBite and unsetBite a position of a cell and a number
         /// they place the number in the cell in thee bitmask arrays (row, col and box arrays)
         /// </summary>
-        private void setBite(int r, int c, int num)
+        private void SetBit(int r, int c, int num)
         {
             row[r] |= (1 << num);
             col[c] |= (1 << num);
             box[r / boxSize * boxSize + c / boxSize] |= (1 << num);
         }
-        private void unsetBite(int r, int c, int num)
+        private void UnsetBit(int r, int c, int num)
         {
             row[r] &= ~(1 << num);
             col[c] &= ~(1 << num);
@@ -113,14 +113,14 @@ namespace OmegaSudoku.Solver
         /// if the int is above 10 it returns a uppersent letter where A repreesnt 10, B - 11 and so on.. 
         /// the char to int is doing the same thing reversed. 
         /// </summary>
-        public static int charToInt(char c)
+        public static int CharToInt(char c)
         {
             if (c >= '0' && c <= '9') return c - '0'; 
             if (c >= 'A' && c <= 'Z') return c - 'A' + 10;
 
             return -1; 
         }
-        private char intToChar(int n)
+        private char IntToChar(int n)
         {
             if (n >= 0 && n <= 9) return (char)(n + '0');
             else if (n >= 10 && n <= 25) return (char)(n - 10 + 'A');
@@ -132,8 +132,8 @@ namespace OmegaSudoku.Solver
         /// </summary>
         private void SetCell(int r, int c, int num)
         {
-            solvedBoard[r * size + c] = intToChar(num);
-            setBite(r, c, num);
+            solvedBoard[r * size + c] = IntToChar(num);
+            SetBit(r, c, num);
         }
         /// <summary>
         /// delete the number from the cell
@@ -141,7 +141,7 @@ namespace OmegaSudoku.Solver
         private void UnsetCell(int r, int c, int num)
         {
             solvedBoard[r * size + c] = '0';
-            unsetBite(r, c, num);
+            UnsetBit(r, c, num);
         }
 
         /// <summary>
