@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using OmegaSudoku.Exceptions;
+using OmegaSudoku.Solver;
 
 
 namespace OmegaSudoku.Tests.Unit

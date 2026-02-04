@@ -1,9 +1,10 @@
 ﻿using OmegaSudoku.Exceptions;
+using OmegaSudoku.Solver;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace OmegaSudoku
+namespace OmegaSudoku.BoardVerify
 {
     internal class BoardVerifier
     {

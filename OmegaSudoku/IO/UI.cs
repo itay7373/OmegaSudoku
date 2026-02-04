@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 
-namespace OmegaSudoku
+namespace OmegaSudoku.IO
 {
-    internal class UI
+    public static class UI
     {
         public static void Start()
         {
@@ -32,6 +32,10 @@ namespace OmegaSudoku
             Console.ReadLine();
         }
 
+        public static void ExceptionCaught()
+        {
+            Console.WriteLine("\nplease enter a valid board.");
+        }
 
         public static void PrintSudoku(string board)
         {

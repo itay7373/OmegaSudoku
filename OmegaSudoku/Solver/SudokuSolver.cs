@@ -1,11 +1,13 @@
-﻿using OmegaSudoku.Exceptions;
+﻿using OmegaSudoku.BoardVerify;
+using OmegaSudoku.Exceptions;
+using OmegaSudoku.IO;
 using System;
 using System.Collections;
 using System.Diagnostics;
 using System.Numerics;
 
 
-namespace OmegaSudoku
+namespace OmegaSudoku.Solver
 {
     public class SudokuSolver
     {
@@ -126,6 +128,23 @@ namespace OmegaSudoku
         }
 
         /// <summary>
+        /// place the number in thee cell
+        /// </summary>
+        private void SetCell(int r, int c, int num)
+        {
+            solvedBoard[r * size + c] = intToChar(num);
+            setBite(r, c, num);
+        }
+        /// <summary>
+        /// delete the number from the cell
+        /// </summary>
+        private void UnsetCell(int r, int c, int num)
+        {
+            solvedBoard[r * size + c] = '0';
+            unsetBite(r, c, num);
+        }
+
+        /// <summary>
         /// this functions start the timer, call the SolverRec (who solve the board), change the unsolved board to the soalved board and stops the timer
         /// </summary>
         public void Solve()
@@ -143,18 +162,14 @@ namespace OmegaSudoku
             var hs = FindHiddenSingle();
             if (hs.num > 0)
             {
-                int r = hs.r;
-                int c = hs.c;
-                solvedBoard[r * size + c] = intToChar(hs.num);
-                setBite(r, c, hs.num);
+                SetCell(hs.r, hs.c, hs.num);
 
                 if (SolverRec())
                 {
                     return true;
                 }
 
-                solvedBoard[r * size + c] = '0';
-                unsetBite(r, c, hs.num);
+                UnsetCell(hs.r, hs.c, hs.num);
                 return false;
             }
 
@@ -174,9 +189,7 @@ namespace OmegaSudoku
             {
                 if (IsSafe(i, j, num))
                 {
-                    //place the number in thee cell
-                    solvedBoard[i * size  + j] = intToChar(num);
-                    setBite(i, j, num);
+                    SetCell(i, j, num);
 
                     //recursive call
                     if (SolverRec())
@@ -184,9 +197,7 @@ namespace OmegaSudoku
                         return true;
                     }
 
-                    //delete the numbeer from the cell
-                    solvedBoard[i * size + j] = '0';
-                    unsetBite(i, j, num);
+                    UnsetCell(i, j, num);
 
                 }
             }
@@ -221,6 +232,7 @@ namespace OmegaSudoku
                             return (i, j);
                         }
 
+                        //calculate how many empty neighbors the cell affect
                         int impact = 3 * size - BitOperations.PopCount((uint)row[i]) 
                             - BitOperations.PopCount((uint)col[j]) 
                             - BitOperations.PopCount((uint)box[i / boxSize * boxSize + j / boxSize]);
@@ -250,58 +262,70 @@ namespace OmegaSudoku
             //go throw all the numbers
             for (int num = 1; num <= size; num++)
             {
+                int mask = (1 << num);
                 for (int i = 0; i < size; i++)
                 {
                     //check the rows
-                    counter = 0;
-                    for (int c = 0; c < size; c++)
+                    //check if the number is not already placed in the row
+                    if ((row[i] & mask) == 0)
                     {
-                        //if the number can be placed in the cell, increase the counter
-                        if (solvedBoard[i * size + c] == '0' && IsSafe(i, c, num))
+                        counter = 0;
+                        for (int c = 0; c < size; c++)
                         {
-                            lastR = i;
-                            lastC = c;
-                            counter++;
+                            //if the number can be placed in the cell, increase the counter
+                            if (solvedBoard[i * size + c] == '0' && IsSafe(i, c, num))
+                            {
+                                lastR = i;
+                                lastC = c;
+                                counter++;
+                            }
                         }
-                    }
-                    //if the counter is one, thee function found a hidden single
-                    if (counter == 1)
-                    {
-                        //return the position and the number
-                        return (lastR, lastC, num);
+                        //if the counter is one, thee function found a hidden single
+                        if (counter == 1)
+                        {
+                            //return the position and the number
+                            return (lastR, lastC, num);
+                        }
                     }
 
+
                     //check the cols - same as rows
-                    counter = 0;
-                    for (int r = 0; r < size; r++)
+                    if ((col[i] & mask) == 0)
                     {
-                        if (solvedBoard[r * size + i] == '0' && IsSafe(r, i, num))
+                        counter = 0;
+                        for (int r = 0; r < size; r++)
                         {
-                            lastR = r;
-                            lastC = i;
-                            counter++;
+                            if (solvedBoard[r * size + i] == '0' && IsSafe(r, i, num))
+                            {
+                                lastR = r;
+                                lastC = i;
+                                counter++;
+                            }
                         }
-                    }
-                    if (counter == 1)
-                    {
-                        return (lastR, lastC, num);
+                        if (counter == 1)
+                        {
+                            return (lastR, lastC, num);
+                        }
                     }
 
                     //check the boxes, almost as the rows and cols
-                    counter = 0;
-                    //find the start index of each box in the board (the top right cell in each box) 
-                    int boxStartIndex = (i * boxSize + (i / boxSize) * boxSize / size + (i / boxSize) * size * 2);
-                    int boxCStartIndex = boxStartIndex % size;
-                    int boxRStrartIndex = boxStartIndex / size;
-                    for (int r = 0; r < boxSize; r++)
+                    if ((box[i] & mask) == 0)
                     {
-                        for (int c = 0; c < boxSize; c++)
+                        counter = 0;
+                        //find the start index of each box in the board (the top right cell in each box) 
+                        int boxStartIndex = (i * boxSize + (i / boxSize) * boxSize / size + (i / boxSize) * size * 2);
+                        int boxCStartIndex = boxStartIndex % size;
+                        int boxRStrartIndex = boxStartIndex / size;
+                        for (int r = 0; r < boxSize; r++)
                         {
-                            if (solvedBoard[(boxRStrartIndex + r) * size + boxCStartIndex + c] == '0' && IsSafe(boxRStrartIndex + r, boxCStartIndex + c, num))
+                            for (int c = 0; c < boxSize; c++)
                             {
-                                lastR = boxRStrartIndex + r;
-                                lastC = boxCStartIndex + c;
-                                counter++;
+                                if (solvedBoard[(boxRStrartIndex + r) * size + boxCStartIndex + c] == '0' && IsSafe(boxRStrartIndex + r, boxCStartIndex + c, num))
+                                {
+                                    lastR = boxRStrartIndex + r;
+                                    lastC = boxCStartIndex + c;
+                                    counter++;
+                                }
                             }
                         }
                     }
