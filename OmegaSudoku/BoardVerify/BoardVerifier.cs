@@ -26,7 +26,7 @@ namespace OmegaSudoku.BoardVerify
                 int value = SudokuSolver.CharToInt(board[i]);
                 if (value < 0 || value > Math.Sqrt(board.Length))
                 {
-                    throw new InvalidValusException(board, i);
+                    throw new InvalidValuesException(board, i);
                 }
             }
         }

@@ -13,8 +13,10 @@ namespace OmegaSudoku.Tests.Unit
         [Fact]
         public void Solve_WhenBoardSizeIsInvalid_ShouldReturnInvalidBoardSizeException()
         {
+            //Arrange
             string invalidBoard = "90500078060207100000083056000610034037008001505004360001030680000890003670000820";
 
+            //Act & Assert
             Assert.Throws<InvalidBoardSizeException>(() => new SudokuSolver(invalidBoard));
         }
 
@@ -22,50 +24,63 @@ namespace OmegaSudoku.Tests.Unit
         [Fact]
         public void Solve_WhenBoardIsEmpty_ShouldReturnEmptyBoardException()
         {
+            //Arrange
             string EmptyBoard = "";
 
+            //Act & Assert
             Assert.Throws<EmptyBoardException>(() => new SudokuSolver(EmptyBoard));
         }
 
         [Fact]
         public void Solve_WhenBoardContainsInvalidValues_ShouldReturnInvalidValusException()
         {
-            string EmptyBoard = "905000780602071000000830560006*00340370080015050043600010306800008900036700008209";
+            //Arrange
+            string inputWithInvalidChar = "905000780602071000000830560006*00340370080015050043600010306800008900036700008209";
 
-            Assert.Throws<InvalidValusException>(() => new SudokuSolver(EmptyBoard));
+            //Act & Assert
+            Assert.Throws<InvalidValuesException>(() => new SudokuSolver(inputWithInvalidChar));
         }
 
         [Fact]
         public void Solve_WhenBoardIsUnsolvable_ShouldReturnUnsolvableBoardException()
         {
+            //Arrange
             SudokuSolver sut = new SudokuSolver("905000780602071000000830560006100340370080015050043600010306800008900036700008209");
 
+            // Act
             Action action = () => sut.Solve();
 
+            // Assert
             Assert.Throws<UnsolvableBoardException>(action);
         }
 
         [Fact]
         public void Solve_WhenBoardHasIdenticalNumbersInSameRow_ShouldReturnIdenticalNumbersRowException()
         {
+            //Arrange
             string invalidBoard = "110000000000000000000000000000000000000000000000000000000000000000000000000000000";
 
+            //Act & Assert
             Assert.Throws<IdenticalNumbersRowException>(() => new SudokuSolver(invalidBoard));
         }
 
         [Fact]
         public void Solve_WhenBoardHasIdenticalNumbersInSameColumn_ShouldReturnIdenticalNumbersColumnException()
         {
+            //Arrange
             string invalidBoard = "100000000100000000000000000000000000000000000000000000000000000000000000000000000";
 
+            //Act & Assert
             Assert.Throws<IdenticalNumbersColumnException>(() => new SudokuSolver(invalidBoard));
         }
 
         [Fact]
         public void Solve_WhenBoardHasIdenticalNumbersInSameBox_ShouldReturnIdenticalNumbersBoxException()
         {
+            //Arrange
             string invalidBoard = "100000000010000000000000000000000000000000000000000000000000000000000000000000000";
 
+            //Act & Assert
             Assert.Throws<IdenticalNumbersBoxException>(() => new SudokuSolver(invalidBoard));
         }
 
@@ -77,12 +92,14 @@ namespace OmegaSudoku.Tests.Unit
         [InlineData("040890630000136820800740519000467052450020700267010000520003400010280970004050063", "142895637975136824836742519398467152451328796267519348529673481613284975784951263")]
         public void Solve_WhenBoardIsValid_ShouldReturnSolvedBoard(string value, string expectedValue)
         {
+            // Arrange
             SudokuSolver sut = new SudokuSolver(value);
 
+            // Act
             sut.Solve();
-
             string actualValue = sut.GetBoard();
 
+            // Assert
             Assert.Equal(expectedValue, actualValue);
         }
 
